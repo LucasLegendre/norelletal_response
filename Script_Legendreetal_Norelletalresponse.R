@@ -1,6 +1,6 @@
 # Script compiled under R 4.0.3 (2020-10-10)
 
-# Analyses performed for the manuscript:
+# Analyses performed by Lucas Legendre for the manuscript:
 # Legendre LJ, Rubilar-Rogers D, Vargas AO, Clarke JA. The first dinosaur egg remains a mystery.
 
 # All original data and trees from:
@@ -11,7 +11,7 @@
 #   Varricchio, D.J., Pol, D., Zelenitsky, D.K., 2020. The first dinosaur egg was soft.
 #   Nature 583, 406–410. https://doi.org/10.1038/s41586-020-2412-8
 
-# WARNING: set your working directory to your prefereed folder before executing this script
+# WARNING: set your working directory to your preferred folder before executing this script
 
 library(ape)
 library(phytools)
@@ -32,7 +32,7 @@ norelltree$edge.length<-rep(1,182)
 plotTree(norelltree)
 
 
-## ML ancestral states (in ape)
+## Maximum likelihood (ML) ancestral states (in ape)
 fitER<-ace(norelldata$Eggshell,norelltree,model="ER",type="discrete")
 round(fitER$lik.anc,3)
 
@@ -95,7 +95,8 @@ norellRR<-norelldata[,1]; names(norellRR)<-rownames(norelldata)
 marganc<-rerootingMethod(ultranorell,norellRR,model="ER")
 plot(marganc)
 
-# =============================== What about MCMC? ===================================
+# ============ Ancestral state reconstruction (ASR) using SIMMAP in phytools ==============
+
 norelldata[c(51,52),]<-0
 norellRR<-norelldata[,1]; names(norellRR)<-rownames(norelldata)
 
@@ -137,7 +138,7 @@ plot(pd,fsize=0.6,ftype="i",colors=cols,ylim=c(-2,Ntip(ultranorell)))
 add.simmap.legend(colors=cols,prompt=FALSE,x=20,y=0,vertical=FALSE)
 dev.off()
 
-# ================================ MP ASR using castor ====================================
+# ==================== Maximum parsimony ASR, using castor ========================
 
 norelldata[c(51,52),]<-1
 norelldataMP<-norelldata+1
