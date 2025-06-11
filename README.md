@@ -10,5 +10,5 @@ This project includes:
 - 'Datawhole2.txt': same as 'Datawhole.txt', with the addition of 3 pterosaur species from Norell et al. (2020), in TXT format
 - 'treewholenew2.DGE.trees.nex': same as ''treewholenew.trees.nex', with the addition of 3 pterosaur species from Norell et al. (2020), in NEXUS format
 
-References listed in the script file
+All references mentioned here are listed in the script file.
 
